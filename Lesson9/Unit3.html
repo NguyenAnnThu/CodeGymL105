@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên</title>
+</head>
+<body>
+    <input type="text" name="int" id="int" placeholder="Nhập số nguyên"/>
+    <button id="check">Check</button>
+    <p id="kq"></p>
+    <script>
+      document.getElementById("check").onclick= function() {
+        let int=parseInt(document.getElementById("int").value);
+        if(int<0){
+          document.getElementById("kq").innerHTML=int+" nhỏ hơn 0";
+        }
+        else if(int>0){
+          document.getElementById("kq").innerHTML=int + " lớn hơn 0"
+        }
+        else{
+          document.getElementById("kq").innerHTML=int + " bằng 0"
+        }
+      }
+    </script>
+</body>
+</html>

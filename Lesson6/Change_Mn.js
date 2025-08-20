@@ -4,7 +4,7 @@ document.getElementById("cv").addEventListener("click", function(){
     let TCurrent =String(document.getElementById("to").value);
     let result1=amount*26;
     let result=amount/26;
-    if(FCurrent==TCurrent){
+    if(FCurrent==TCurrent ||amount<=0){
         alert("Không hợp lệ!!!")
     }
     else{
