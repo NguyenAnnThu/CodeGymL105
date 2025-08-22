@@ -14,11 +14,16 @@
     let a=Number(document.getElementById("sa").value);
     let b=Number(document.getElementById("sb").value);
     let c=a/b;
-    if(b===0){
-      document.getElementById("kq").innerHTML="Không chia được cho 0";
+    if(isNaN(a)||isNaN(b)){
+        document.getElementById("kq").innerHTML="Vui lòng nhập lại";
     }
     else{
-      document.getElementById("kq").innerHTML=c;
+        if(b===0){
+            document.getElementById("kq").innerHTML="Không chia được cho 0";
+        }
+        else{
+            document.getElementById("kq").innerHTML=c;
+        }
     }
   }
 </script>

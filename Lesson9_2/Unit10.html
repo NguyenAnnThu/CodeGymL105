@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giá điện</title>
+</head>
+<body>
+      <input type="text" name="gia" id="gia" placeholder="Nhập số kWh điện: "/>
+      <button id="check">Tính giá điện</button>
+      <p id="kq"></p>
+<script>
+  document.getElementById("check").onclick=function(){
+    let a= Number(document.getElementById("gia").value);
+    if(isNaN(a)|| a<0){
+      document.getElementById("kq").innerHTML="Vui lòng nhập lại"
+    }
+    else{
+      if(a > 0 && a <= 50){
+        document.getElementById("kq").innerHTML=a*1948;
+      }
+      else if(a > 50 && a <= 100){
+        document.getElementById("kq").innerHTML=50*1949+(a-50)*2014;
+      }
+      else if(100<a && a<=200){
+        document.getElementById("kq").innerHTML=50*1949+50*2014+(a-100)*2834;
+      }
+      else if(200<a&& a<=300){
+        document.getElementById("kq").innerHTML=50*1949+50*2014+100*2834+(a-200)*2927;
+      }
+      else if(300<a&& a<=400){
+        document.getElementById("kq").innerHTML=50*1949+50*2014+100*2834+100*2927+(a-300)*2958;
+      }
+      else{
+        document.getElementById("kq").innerHTML=50*1949+50*2014+100*2834+100*2927+100*2958+(a-400)*3000;
+      }
+    }
+  }
+</script>
+</body>
+</html>

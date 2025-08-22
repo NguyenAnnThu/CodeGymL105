@@ -9,16 +9,21 @@
         let a=parseInt(prompt("Nhập số thứ 1: "))
         let b=parseInt(prompt("Nhập số thứ 2: "))
         let c= parseInt(prompt("Nhập số thứ 3: "))
-        if (a>b && a>c){
-          alert(a+ " là số lớn nhất")
+        if(isNaN(a+b+c)){
+            alert("Dữ liệu k đúng")
         }
         else{
-          if(b>c){
-            alert(b + " là số lớn nhất")
-          }
-          else{
-            alert (c + " là số lớn nhất")
-          }
+            if (a>b && a>c){
+                alert(a+ " là số lớn nhất")
+            }
+            else{
+                if(b>c){
+                    alert(b + " là số lớn nhất")
+                }
+                else{
+                    alert (c + " là số lớn nhất")
+                }
+            }
         }
       </script>
 </body>

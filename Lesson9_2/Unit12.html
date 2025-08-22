@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lãi ngân hàng</title>
+</head>
+<body>
+        <input type="text" name="P" id="p" placeholder="Nhập số tiền ban đầu:  "/>
+        <input type="text" name="nam" id="year" placeholder="Nhập số năm vay:"/>
+        <button id="check">Check</button>
+        <p id="kq"></p>
+        <script>
+            document.getElementById("check").onclick=function(){
+                let a=Number(document.getElementById("p").value);
+                let b=Number(document.getElementById("year").value);
+                let r=0.06;
+                let m=12;
+                if(isNaN(a+b) || a<0 &&b<0){
+                    document.getElementById("kq").innerHTML="Vui lòng nhập lại"
+                }
+                else{
+                    document.getElementById("kq").innerHTML=a*Math.pow((1+r/m),(b*m))
+                }
+            }
+        </script>
+</body>
+</html>

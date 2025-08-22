@@ -5,6 +5,41 @@
     <title>Xếp học lực</title>
 </head>
 <body>
-      <input type="text" name=""
+      <input type="text" name="kt" id="kt" placeholder="Nhập điểm bài kiểm tra: "/>
+      <input  type="text" name="gk" id="gk" placeholder="Nhập điểm giữa kì"/>
+      <input type ="text" name="ck" id="ck" placeholder="Nhập điểm cuối kì"/>
+      <br>
+      <br>
+    <button id="check" >Tính điểm</button>
+    <p>Học lực của bạn là:</p>
+      <span id="kq"></span>
+    <script>
+        document.getElementById("check").onclick=function(){
+            let a= Number(document.getElementById("kt").value);
+            let b= Number(document.getElementById("gk").value);
+            let c=Number(document.getElementById("ck").value);
+            let d=(a+b*2+c*3)/6;
+            if(a<0|| b<0 ||c <0||isNaN(a+b+c)){
+                document.getElementById("kq").innerHTML="Dữ liệu không đúng";
+            }
+            else{
+                if(d>=8){
+                    document.getElementById("kq").innerHTML="Giỏi"
+                }
+                else if(d>=6.5){
+                    document.getElementById("kq").innerHTML="Khá"
+                }
+                else if (d>=5){
+                    document.getElementById("kq").innerHTML="Trung bình"
+                }
+                else if( d>=3.5){
+                    document.getElementById("kq").innerHTML="Yếu"
+                }
+                else{
+                    document.getElementById("kq").innerHTML="Kém"
+                }
+            }
+        }
+    </script>
 </body>
 </html>

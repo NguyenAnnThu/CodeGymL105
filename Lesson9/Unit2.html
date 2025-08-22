@@ -11,12 +11,17 @@
     <script>
       document.getElementById("check").onclick = function(){
         let tuoi=document.getElementById("old").value;
-        if(tuoi>=15 && tuoi<=100){
-          document.getElementById("kq").innerHTML="Bạn đủ điều kiện vào lớp 10";
-        }
-        else{
-          document.getElementById("kq").innerHTML="Bạn không đủ điều kiện"
-        }
+       if(isNaN(tuoi)){
+           document.getElementById("kq").innerHTML="Vui lòng nhập lại"
+       }
+       else{
+           if(tuoi>=15 && tuoi<=100){
+               document.getElementById("kq").innerHTML="Bạn đủ điều kiện vào lớp 10";
+           }
+           else{
+               document.getElementById("kq").innerHTML="Bạn không đủ điều kiện"
+           }
+       }
       }
     </script>
 </body>

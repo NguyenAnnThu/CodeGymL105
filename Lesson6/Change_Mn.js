@@ -4,7 +4,7 @@ document.getElementById("cv").addEventListener("click", function(){
     let TCurrent =String(document.getElementById("to").value);
     let result1=amount*26;
     let result=amount/26;
-    if(FCurrent==TCurrent ||amount<=0){
+    if(FCurrent==TCurrent ||amount<=0|| isNaN(amount)){
         alert("Không hợp lệ!!!")
     }
     else{

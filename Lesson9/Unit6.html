@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính hoa hồng</title>
+</head>
+<body>
+      <input type="text" name="ds" id="ds" placeholder="Nhập doanh thu của công ty"/>
+      <button id="check">Check</button>
+      <p>Số tiền bạn nhận được:</p>
+      <span id="kq"></span>
+      <script>
+        document.getElementById("check").onclick=function(){
+          let a=Number(document.getElementById("ds").value);
+         if(isNaN(a)){
+             document.getElementById("kq").innerHTML="Vui lòng nhập số";
+         }
+         else{
+             if(0<a<200000000){
+                 document.getElementById("kq").innerHTML=0;
+             }
+             else if (200000000<=a<=250000000){
+                 document.getElementById("kq").innerHTML=a*0.01;
+             }
+             else if (a<=500000000){
+                 document.getElementById("kq").innerHTML=a*0.25;
+             }
+             else{
+                 document.getElementById("kq").innerHTML=a*0.5;
+             }
+         }
+        }
+      </script>
+</body>
+</html>
