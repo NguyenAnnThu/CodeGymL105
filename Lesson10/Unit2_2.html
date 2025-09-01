@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giai thừa của 1 số nguyên dương</title>
+</head>
+<body>
+      <script>
+        let a=Number(prompt(`Nhập số:`))
+        if(isNaN(a)||a<0){
+          alert("Vui lòng nhập lại.")
+        }
+        else{
+          let giaithua=1;
+          for(let i=2;i<=a;i++){
+            giaithua*=i;
+          }
+          document.write(giaithua)
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game trò chơi</title>
+</head>
+<body>
+      <button id="choi">Chơi</button>
+<script>
+  document.getElementById("choi").onclick = function() {
+    let a= Number(prompt("Nhập số bé nhất:"))
+    let b=Number(prompt("Nhập số lớn nhất: "))
+    let c=Math.floor(Math.random()*(b-a+1)+a)
+    let d;
+    if(isNaN(a+b) || a<0||b<0||a>b){
+      alert("Vui lòng nhập lại")
+    }
+    else{
+      let i;
+      for( i=0;i<3;i++){
+        d=Number(prompt("Nhập số bạn đoán: "))
+        if(isNaN(d)||d<a||d>b){
+          alert("Vui lòng nhập lại");
+        }
+       else if(d===c){
+          alert("Bạn đã đoán đúng.")
+          break;
+        }
+        else if(d<c){
+          alert("Số bạn đoán nhỏ hơn.Vui lòng đoán lại")
+        }
+        else if(d>c){
+          alert("Số bạn đoán lớn hơn.Vui lòng đoán lại")
+        }
+      }
+      if(i===3){
+        alert("Bạn đã chơi hết lượt.")
+      }
+    }
+  }
+</script>
+</body>
+</html>

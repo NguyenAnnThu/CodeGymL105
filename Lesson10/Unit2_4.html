@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo hình chữ nhật</title>
+</head>
+<body>
+        <p id="kq"></p>
+    <script>
+      let a=Number(prompt("Nhập chiều dài:"))
+      let b=Number(prompt("Nhập chiều rộng: "))
+      let result=document.getElementById("kq");
+      result.innerHTML="";
+      if(isNaN(a+b)||a<=0||b<=0|| b>a){
+        alert("Vui lòng nhập lại:")
+      }
+      let row;
+      for(let i=1;i<=a;i++){
+          row="";
+          for(let j=1;j<=b;j++){
+              if(i===a || i===1|| j===b||j===1){
+                  row+="*"
+              }
+              else{
+                  row+="&nbsp;&nbsp;"
+              }
+
+          }
+          result.innerHTML+=row+"<br>"
+      }
+    </script>
+</body>
+</html>
