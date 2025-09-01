@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viết chương trình đếm số nguyên âm trong một mảng.</title>
+</head>
+<body>
+<input type="text" id="int" name="int"/>
+<button id="check">Hiển thị</button>
+<p id="result"></p>
+<script>
+  document.getElementById("check").onclick = function() {
+    let n = Number(document.getElementById("int").value);
+    if (isNaN(n) || n < 0) {
+      alert("Vui lòng nhập lại")
+    }
+    let x;
+    let a = []
+    for (let i = 0; i < n; i++) {
+      x = Number(prompt("Nhâp số:"))
+      if (isNaN(x)) {
+        alert("Vui lòng nhập lại")
+        i--;
+        continue;
+      }
+      a.push(x)
+    }
+    let count=0;
+    for(let i=0; i < a.length; i++) {
+      if(a[i]<0){
+        count++
+      }
+    }
+    document.getElementById("result").innerHTML = count
+  }
+</script>
+</body>
+</html>
