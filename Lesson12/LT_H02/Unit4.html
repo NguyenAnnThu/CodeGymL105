@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra ký tự số</title>
+  <script src="../../Func_Sum/Check_IsNaN.js"></script>
+</head>
+<body>
+<input type="text" id="inta" name="inta">
+<button onclick="Hienthi()">Hiển thị</button>
+<p id="result"></p>
+<script >
+  function Hienthi() {
+    let r = Number(document.getElementById("inta").value);
+    if (!isNotANumber(r)) {
+    } else {
+      document.getElementById("result").innerHTML = "Là số"
+    }
+  }
+</script>
+</body>
+</html>

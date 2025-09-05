@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm tên ngôi sao</title>
+</head>
+<body>
+    <input type="text" id="int" name=" int">
+    <button onclick="Hienthi()">Hiển thị</button>
+    <p id="result"></p>
+    <script>
+      function Hienthi(){
+        let a= document.getElementById("int").value
+        let arr=["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"]
+        let arrName=["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", "Ursa Major","Leo"]
+        let index=KiemTra(a,arr)
+        if(index===-1){
+          document.getElementById("result").innerHTML=`Không có kết quả`
+        }
+        else{
+          document.getElementById("result").innerHTML=arrName[index]
+        }
+      }
+      function KiemTra(a,arr){
+        for (let i=0;i<arr.length;i++){
+          if(a===arr[i]){
+            return i
+          }
+        }
+        return -1
+      }
+    </script>
+</body>
+</html>
