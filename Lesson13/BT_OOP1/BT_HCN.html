@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+    <input type="text" id="CD" name="CD" placeholder="Nhập chiều dài:">
+    <input type="text" id="CR" name="CR" placeholder="Nhập chiều rộng:">
+    <button onclick="Hienthi()">Hiển thị</button>
+    <p id="result"></p>
+<script>
+    class HinhChuNhat{
+        CD; CR
+        constructor(CD,CR){
+            this.CD=CD;
+            this.CR=CR;
+        }
+        TinhDientich(){
+            return this.CD* this.CR;
+        }
+        TinhChuVi(){
+            return (this.CD+this.CR)*2;
+        }
+    }
+    function Hienthi(){
+        let CD=Number(document.getElementById("CD").value);
+        let CR=Number(document.getElementById("CR").value);
+        if(isNaN(CD)||isNaN(CR)||CR>CD){
+            alert("Vui lòng nhập lại!!")
+            return
+        }
+        let hcn=new HinhChuNhat(CD,CR)
+        document.getElementById("result").innerHTML=`Diện tích hình chữ nhật: ${hcn.TinhDientich()} <br> Chu vi hình chữ nhật là: ${hcn.TinhChuVi()}`;
+    }
+</script>
+
+</body>
+</html>

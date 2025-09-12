@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+    <input type="text" id="cel" name="cel" placeholder="Nhập nhiệt độ đơn vị C:">
+    <button onclick="Hienthi()">Hiển thị</button>
+    <p id="result"></p>
+<script>
+  class Temperature{
+    Cel;
+    constructor(Cel){
+      this.Cel=Cel;
+    }
+    Change_Fah(){
+      return (this.Cel*9/5)+32;
+    }
+    Change_Kel(){
+      return (this.Cel+273.15)
+    }
+  }
+  function Hienthi(){
+    let cel=Number(document.getElementById("cel").value);
+    if(isNaN(cel)|| cel<-273){
+      alert("Vui lòng nhập lại")
+      return;
+    }
+    let tem=new Temperature(cel)
+    document.getElementById("result").innerHTML=`Nhiệt độ Fahrenheit là: ${tem.Change_Fah()}<br> Nhiệt độ Kelvin là: ${tem.Change_Kel()}`
+  }
+
+</script>
+</body>
+</html>
