@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 2</title>
+</head>
+<body>
+        <p> Phương trình bậc 2: a*x<sup>2</sup>+b*x+c=0</p>
+        <input type="text" name="a" id="a" placeholder="Nhập a: "/>
+        <input type="text" name="b" id="b" placeholder="Nhập b: "/>
+        <input type="c" name="c" id="c" placeholder="Nhập c: "/>
+        <button id="check">Check</button>
+        <p id="result"></p>
+<script>
+    document.getElementById("check").onclick=function(){
+        let a=document.getElementById("a").value;
+        let b=document.getElementById("b").value;
+        let c=document.getElementById("c").value;
+        if(isNaN(a)||isNaN(b)||isNaN(c)){
+            document.getElementById("result").innerHTML="Vui lòng nhập lại";
+        }
+        else{
+            if(a===0) {
+                if (c === 0 && b === 0) {
+                    document.getElementById("result").innerHTML = "Phương trình vô số nghiệm"
+                } else if (c === 0) {
+                    document.getElementById("result").innerHTML = "Phương trình vô nghiệm"
+                } else {
+                    document.getElementById("result").innerHTML = "x =" + (-c) / b;
+                }
+            }
+            else {
+                let detal=b*b-4*a*c;
+                if (detal<0){
+                    document.getElementById("result").innerHTML="Vô nghiệm"
+                }
+                else if(detal===0){
+                    document.getElementById("result").innerHTML="X ="+(-b)/2*a;
+                }
+                else{
+                    document.getElementById("result").innerHTML="X1 ="+(-b+Math.sqrt(detal)/2*a) +"<br>"+"X2 ="+(-b-Math.sqrt(detal)/2*a) ;
+                }
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

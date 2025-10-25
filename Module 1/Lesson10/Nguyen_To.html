@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị các số nguyên tối đầu tiên</title>
+</head>
+<body>
+    <input type="text" name="int" id="int"/>
+    <button id="check">Hiển thị</button>
+    <p id="kq"></p>
+    <script>
+      document.getElementById("check").onclick=function(){
+        let a=Number(document.getElementById("int").value);
+        if(isNaN(a) ||a<0){
+          document.getElementById("kq").innerHTML="Vui lòng nhập lại";
+        }
+        else{
+          let count=0;
+          let n=2;
+          let i;
+          let kq="";
+          while(count<a){
+              i=2;
+              while(i<=Math.sqrt(n)){
+                  if(n%i===0){
+                      break;
+                  }
+                  i++;
+              }
+              if(i>Math.sqrt(n)){
+                  kq+=n+" ";
+                  count++;
+              }
+              n++;
+          }
+          document.getElementById("kq").innerHTML=kq;
+        }
+        }
+
+    </script>
+
+</body>
+</html>

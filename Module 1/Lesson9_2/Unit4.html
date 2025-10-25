@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích hình chữ nhật</title>
+</head>
+<body>
+      <script>
+        let a= Number(prompt("Nhập chiều dài: "))
+        let b=Number(prompt("Nhập chiều rộng: "))
+       if(isNaN(a)||isNaN(b)){
+         alert("Vui lòng nhập lại")
+       }
+       else{
+         if (a>0 && b>0){
+           alert(`Diện tích hình chữ nhật là: ${a*b}`)
+         }
+         else{
+           alert("Không hợp lệ")
+         }
+       }
+      </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích tam giác vuông</title>
+</head>
+<body>
+      <script>
+        let a=Number(prompt("Nhập cạnh a:"))
+        let b=Number(prompt("Nhập cạnh b: "))
+        if(isNaN(a)||isNaN(b)){
+          alert("Vui lòng nhập lại")
+        }
+        else{
+          if (a>0 && b>0){
+            alert(`Diện tích tam giác vuông là: ${1/2*a*b}`)
+          }
+          else{
+            alert("Không hợp lêj")
+          }
+        }
+      </script>
+</body>
+</html>

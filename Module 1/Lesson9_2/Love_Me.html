@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do you love me</title>
+    <style>
+      body {
+        text-align:center;
+        font-size: 50px;
+        margin-top:20%;
+      }
+      button{
+        font-size:20px;
+        position: absolute; /* cần thêm dòng này */
+      }
+      #yes {
+        left: 45%;
+        top: 60%;
+      }
+      #no {
+        left: 55%;
+        top: 60%;
+      }
+      #kq {
+        display: inline-block;
+        padding: 20px 40px;
+        border-radius: 20px;
+        background-color: pink;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: 30px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+    </style>
+</head>
+<body>
+      <p>Do you love me?</p>
+      <p id="kq"></p>
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+
+<script>
+  document.getElementById("yes").onclick = function () {
+    let kq = document.getElementById("kq");
+    kq.innerHTML="Tôi cũng yêu bạn 💖";
+    kq.style.display = "inline-block";
+      document.getElementById("yes").style.display = "none";
+    document.getElementById("no").style.display = "none";
+  }
+  document.getElementById("no").onmouseover = function () {
+    let noBtn = document.getElementById("no");
+    let maxWidth = window.innerWidth - noBtn.offsetWidth;
+    let maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+    let randomLeft = Math.random() * maxWidth;
+    let randomTop = Math.random() * maxHeight;
+
+    noBtn.style.left = randomLeft + "px";
+    noBtn.style.top = randomTop + "px";
+  }
+</script>
+</body>
+</html>
