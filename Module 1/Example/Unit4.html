@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Máy tính</title>
+</head>
+<body>
+<input type="text" id="add" name="add" placeholder="Nhập mã:">
+<input type="text" id="name" name="name" placeholder="Nhập tên">
+<br><br>
+<input type="text" id="manu" name="manu" placeholder="Nhập hãng:">
+<input type="text" id="price" name="price" placeholder="Nhập giá:">
+<button id="addCom">Thêm mới</button>
+<p id="result"></p>
+
+<script>
+  class Computer {
+    constructor(id, name, manufacturer, price) {
+      this._id = id;
+      this._name = name;
+      this._manufacturer = manufacturer;
+      this._price = price;
+    }
+
+
+    get id() { return this._id; }
+    get name() { return this._name; }
+    get manufacturer() { return this._manufacturer; }
+    get price() { return this._price; }
+
+
+    set id(value) {
+      if (isNaN(value)||value<0) {
+        alert("Vui lòng nhập lại")
+      }
+      else{
+        this._id = value;
+      }
+    }
+    set name(value) { this._name = value; }
+    set manufacturer(value) { this._manufacturer = value; }
+    set price(value) {
+      if (isNaN(value) || value < 0) {
+        alert("Giá không hợp lệ");
+      } else {
+        this._price = Number(value);
+      }
+    }
+
+    toString() {
+      return `Mã máy: ${this._id} | Tên máy: ${this._name} | Hãng: ${this._manufacturer} | Giá: ${this._price}`;
+    }
+  }
+
+  let arr = [];
+
+  document.getElementById("addCom").addEventListener("click", () => {
+    let id = document.getElementById("add").value.trim();
+    let name = document.getElementById("name").value.trim();
+    let manu = document.getElementById("manu").value.trim();
+    let price = document.getElementById("price").value.trim();
+
+    if (!id || !name || !manu || !price) {
+      alert("Vui lòng nhập đầy đủ thông tin!");
+      return;
+    }
+
+    let com = new Computer(id, name, manu, price);
+    arr.push(com);
+    display();
+    document.getElementById("add").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("manu").value = "";
+    document.getElementById("price").value = "";
+  });
+
+  function display() {
+    let result = document.getElementById("result");
+    result.innerHTML = arr.map(c => c.toString()).join("<br>");
+  }
+</script>
+</body>
+</html>

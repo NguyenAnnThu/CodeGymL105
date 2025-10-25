@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập mảng</title>
+</head>
+<body>
+    <input type="text" id="int" name="int" placeholder="Nhập mảng đầu vào">
+    <button id="check"> Kiểm tra</button>
+    <p id="result"></p>
+<script>
+  document.getElementById("check").addEventListener("click", function(){
+    let str=document.getElementById("int").value;
+    let upperSt=0;
+    let lowerSt=0
+    for (let i=0;i<str.length;i++){
+      if(str[i]===str[i].toLowerCase()&& str[i]!==str[i].toUpperCase()){
+          lowerSt+=1
+      }
+      else{
+        upperSt+=1
+      }
+    }
+    document.getElementById("result").innerHTML=`[${upperSt},${lowerSt}]`
+  })
+</script>
+</body>
+</html>

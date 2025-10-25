@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính tổng các số có vị trí là số nguyên tố</title>
+</head>
+<body>
+    <input type="text" id="num" name="num" placeholder="Nhập vào:">
+    <button id="check">Tính tổng</button>
+    <p id="result"></p>
+<script>
+    document.getElementById("check").onclick = function(){
+        let number=Number(document.getElementById("num").value);
+        let arr=[]
+        let sum=0;
+        if(isNaN(number)|| number>50|| number<0){
+            alert("Vui lòng nhập lại !!!")
+            return;
+        }
+        for(let i=0;i<number;i++){
+            let so=prompt("Nhập phần tử mảng:")
+            if(isNaN(so)){
+                alert("Vui lòng nhập lại !!!")
+                return;
+            }
+            arr.push(Number(so))
+        }
+        for (let i=0;i<arr.length;i++){
+            if(isPrime(i)){
+                sum+=arr[i]
+            }
+        }
+        document.getElementById("result").innerHTML=sum;
+
+    }
+    function isPrime(n){
+        if(n<2) return false
+        for (let i=2;i<=Math.sqrt(n);i++){
+            if(n%i===0){
+                return false
+            }
+        }
+        return true
+    }
+</script>
+</body>
+</html>

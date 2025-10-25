@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Login</title>
+    <style>
+      h2{
+        margin:2% 20% 2% 20%;
+
+      }
+      form{
+        width:250px;
+        margin:0 20% 0 20%;
+        border:1px solid black;
+        padding:10px;
+        line-height: 15px;
+        font-family: "Times New Roman";
+
+      }
+      p{
+        margin-bottom: 10px;
+        font-size:17px;
+        font-weight:bold;
+      }
+      #sb{
+        margin-top:20px;
+        baclground-color:white;
+        border:1px solid gray;
+      }
+      input{
+        border:2px solid darkgray;
+        height:20px;
+      }
+    </style>
+</head>
+<body>
+  <h2>Mô tả</h2>
+  <form action="http://demo.codegym.vn/6/registration_form/register.php" method="post">
+    <p>Họ và tên</p>
+    <input type="text" name="usn"><br>
+    <p>Email</p>
+    <input type="email" name="email"><br>
+    <p>Số điện thoại</p>
+    <input type="text" name="phone"><br>
+    <p>Giới tính</p>
+    <input type="radio" name="rd" value="1">Nam
+    <input type="radio" name="rd" value="0">Nữ
+    <br>
+    <input type="submit" name="sb" id="sb" value="Đăng ký">
+
+  </form>
+</body>
+</html>

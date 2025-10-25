@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm Fibonacci</title>
+</head>
+<body>
+        <input type="text" id="int" name="int" placeholder="Nhập">
+        <button id="check">Hiển thị</button>
+        <p id="result"></p>
+<script>
+    document.getElementById("check").addEventListener("click",function(){
+        let n=Number(document.getElementById("int").value);
+        let arr=[]
+        let Fibo=[]
+        if(isNaN(n)||n<0){
+            alert("Vui lòng nhập lại")
+            return
+        }
+        for(let i=1;i<=n;i++){
+            let num=Number(prompt("Nhập số:"))
+            if(isNaN(num)||num<0){
+                alert("Vui lòng nhập lại")
+                return
+            }
+            arr.push(num)
+        }
+        for( let i=0;i<arr.length;i++){
+            if(isFibonacci(arr[i])){
+                Fibo.push(arr[i])
+            }
+        }
+        let result = [...new Set(Fibo)].sort((a, b) => a - b);
+        document.getElementById("result").innerHTML=result;
+    })
+    function isPerfectSquare(x) {
+        return Number.isInteger(Math.sqrt(x));
+    }
+    function isFibonacci(n) {
+        return isPerfectSquare(5 * n * n + 4) || isPerfectSquare(5 * n * n - 4);
+    }
+</script>
+</body>
+</html>
