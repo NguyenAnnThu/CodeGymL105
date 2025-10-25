@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bàn cờ caro đơn giản</title>
+</head>
+<body>
+<h1>Caro Game Simple</h1>
+<p id="result"></p>
+<button onclick="Play_Game()">Change Value</button>
+<script>
+    let board = [];
+    let size = 5;
+    let turn=0;
+    for (let i = 0; i < size; i++) {
+        board[i] = [];
+        for (let j = 0; j < size; j++) {
+            board[i][j] = 0;
+        }
+    }
+    function renderBoard() {
+        let count = "<table>";
+        for (let i = 0; i < size; i++) {
+            count += "<tr>";
+            for (let j = 0; j < size; j++) {
+               count += "<td>" + board[i][j] + "</td>";
+            }
+            count += "</tr>";
+        }
+        count += "</table>";
+        document.getElementById("result").innerHTML = count;
+    }
+    function Play_Game() {
+        let a = Number(prompt("Nhập vị trí x:"));
+        let b = Number(prompt("Nhập vị trí y:"));
+
+        if (a >= 0 && a < size && b >= 0 && b < size) {
+            if (board[a][b] === 0) {
+                if (turn % 2 === 0) {
+                    board[a][b] = "X";
+                } else {
+                    board[a][b] = "o";
+                }
+                turn++;
+                renderBoard();
+            } else {
+                alert("Ô này đã có giá trị rồi!");
+            }
+        } else {
+            alert("Vị trí không hợp lệ!");
+        }
+    }
+    renderBoard();
+</script>
+</body>
+</html>

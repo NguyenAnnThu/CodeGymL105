@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nhập v</title>
+</head>
+<body>
+<input type="text" id="int" name="int" placeholder="Nhập số phần tử của mảng"/>
+<button id="check">Hiển thị</button>
+<p id="result"></p>
+<script>
+  document.getElementById("check").onclick = function() {
+    let n = Number(document.getElementById("int").value);
+    if (isNaN(n)|| n < 0) {
+      alert("Vui lòng nhập lại")
+    }
+    let x;
+    let a = []
+    for (let i = 0; i < n; i++) {
+      x = Number(prompt("Nhâp số:"))
+      if (isNaN(x)) {
+        alert("Vui lòng nhập lại")
+        i--;
+        continue;
+      }
+      a.push(x)
+    }
+    a.sort((a,b) => b-a)
+    document.getElementById("result").innerHTML=`Mảng sau sắp xếp: ${a}`
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="int" name="int">
+<button id="check">Hiển thị</button>
+<p id="result"></p>
+<script>
+  document.getElementById("check").onclick=function(){
+    let str=document.getElementById("int").value;
+    let a = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    let reversed = a.split("").reverse().join("");
+    if(reversed===a){
+      document.getElementById("result").innerHTML="true"
+    }
+    else{
+      document.getElementById("result").innerHTML="false"
+    }
+  }
+</script>
+</body>
+</html>

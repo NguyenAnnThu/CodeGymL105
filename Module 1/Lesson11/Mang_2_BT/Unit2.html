@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chèn dấu "-" giữa các số chẵn</title>
+</head>
+<body>
+  <input type="text" name="int" id="int"/>
+  <button id="check">Hiển thị</button>
+  <p id="result"></p>
+<script>
+  document.getElementById("check").onclick=function(){
+    let x=document.getElementById("int").value;
+    let result=[]
+    if(isNaN(x)){
+      alert("Vui lòng nhập lại")
+    }
+    for (let i=0;i<x.length;i++){
+      result.push(x[i])
+      if(Number(x[i]%2===0) && Number(x[i+1]%2===0)){
+        result.push("-")
+      }
+    }
+    document.getElementById("result").innerHTML=result.join('');
+  }
+</script>
+</body>
+</html>

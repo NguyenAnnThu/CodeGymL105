@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viết chương trình khởi tạo một mảng số nguyên gồm 10 phần tử khác nhau.
+      Chương trình hiển thị phần tử có giá trị lớn nhất trong mảng và vị
+      trí của phần tử đó.</title>
+</head>
+<body>
+    <input type="text" id="int" name="int"/>
+    <button id="check">Hiển thị</button>
+    <p id="result"></p>
+<script>
+  document.getElementById("check").onclick = function() {
+    let n=Number(document.getElementById("int").value);
+    if(isNaN(n)|| n<0){
+      alert("Vui lòng nhập lại")
+    }
+    let x;
+    let a=[]
+    for(let i=0;i<n;i++){
+      x=Number(prompt("Nhâp số:"))
+      if(isNaN(x)){
+        alert("Vui lòng nhập lại")
+        i--;
+        continue;
+      }
+      a.push(x)
+    }
+      let max=Math.max(...a)
+      let index=a.indexOf(max)
+    document.getElementById("result").innerHTML="Số lớn nhất là: "+ max + "<br>"+"Vị trí của số đó:"+index;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <button id="DC">Tổng đường chéo chính</button>
+      <button id="DP">Tổng đường chéo phụ</button>
+      <p id="result"></p>
+<script>
+   let a=[ [1,2,3],
+           [2,3,4],
+           [3,4,5],
+          ]
+   document.getElementById("DC").onclick=function(){
+     let DC=0
+     for(let i=0;i<a.length;i++){
+       DC+=a[i][i]
+     }
+     document.getElementById("DC").innerHTML=DC
+   }
+   document.getElementById("DP").onclick=function(){
+     let DP=0;
+     for(let i=0;i<a.length;i++){
+       DP+=a[i][a.length-1-i]
+     }
+    document.getElementById("DP").innerHTML=DP
+   }
+
+</script>
+</body>
+</html>

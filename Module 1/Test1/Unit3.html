@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="int" name="int" placeholer="Nhập vào số phần tử:">
+    <button id="check">Hiển thị</button>
+<p id="result"></p>
+<script>
+  document.getElementById("check").onclick=function(){
+    let n=Number(document.getElementById("int").value);
+    if(isNaN(n)||n<0){
+      alert("Vui lòng nhập lại")
+      return
+    }
+    let arr=[]
+    let number;
+    let result=[]
+    for(let i=0;i<n;i++){
+      number=Number(prompt(`Nhập phần thử thứ ${i}:`))
+      if(isNaN(number)){
+        alert("Vui lòng nhập lại")
+        return
+      }
+      arr.push(number)
+    }
+    for(let i=0;i<arr.length;i++){
+      if(Armstrong(arr[i])){
+        result.push(arr[i])
+      }
+    }
+document.getElementById("result").innerHTML=`[${result}]`
+  }
+  function Armstrong(n){
+    let s=String(n)
+    let k=s.length
+    let arm=0
+    let index;
+    for(let i=0;i<k;i++){
+      index=Number(s[i])
+      arm+=Math.pow(index,k)
+    }
+    if(arm===n){
+      return true
+    }
+    return false
+  }
+</script>
+</body>
+</html>

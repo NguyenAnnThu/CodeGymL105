@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi từ chữ thường qua chữ hoa và ngược lại</title>
+</head>
+<body>
+  <input type="text" name="int" id="int"/>
+  <button id="check">Hiển thị</button>
+  <p id="result"></p>
+<script>
+  document.getElementById("check").onclick=function (){
+    let x=document.getElementById("int").value;
+    let result=[]
+    for (let i=0;i<x.length;i++){
+      if(x[i]===x[i].toUpperCase() && x[i]!==x[i].toLowerCase()){
+        result.push(x[i].toLowerCase());
+      }
+      else  if(x[i]!==x[i].toUpperCase() && x[i]===x[i].toLowerCase()){
+        result.push(x[i].toUpperCase());
+      }
+      else{
+        result.push(x[i]);
+      }
+    }
+    document.getElementById("result").innerHTML=result.join("");
+  }
+</script>
+</body>
+</html>

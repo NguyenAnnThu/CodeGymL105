@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="int" name="int" placeholder="Nhập số phần tử">
+<button id="check">Hiển thị</button>
+<p id="result"></p>
+<script>
+  document.getElementById("check").onclick=function(){
+    let n=Number(document.getElementById("int").value);
+    if(isNaN(n)||n<0||n>100){
+      alert("Vui lòng nhập lại")
+      return
+    }
+    let arr=[]
+    let number;
+    for(let i=0;i<n;i++){
+      number=Number(prompt(`Vui lòng nhập phần tử ${i}`));
+      if(isNaN(number)){
+        alert("Vui lòng nhập lại")
+        return
+      }
+      arr.push(number)
+    }
+    let result=[]
+    for(let i=0;i<arr.length;i++){
+      if(isPrime(arr[i])){
+        result.push(arr[i])
+      }
+    }
+    let uniqueArr = result.filter((value, index) => result.indexOf(value) === index);
+    document.getElementById("result").innerHTML=uniqueArr
+  }
+  function isPrime(n){
+    if(n<2) return false
+    for(let i=2;i<=Math.sqrt(n);i++){
+      if(n%i===0){
+        return false
+      }
+    }
+    return true
+  }
+</script>
+</body>
+</html>

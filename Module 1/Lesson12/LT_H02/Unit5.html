@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm số nguyên nhỏ nhất</title>
+  <script src="../../Func_Sum/Check_IsNaN.js"></script>
+</head>
+<body>
+    <input type="text" id="inta" name="inta">
+    <input type="text" id="intb" name="intb">
+    <input type="text" id="intc" name="intc">
+    <button onclick="Hienthi()">Hiển thị</button>
+    <p id="result"></p>
+<script>
+  function Hienthi() {
+    let a=document.getElementById("inta").value;
+    let b = document.getElementById("intb").value;
+    let c = document.getElementById("intc").value;
+    if(!isNotANumber(a)||!isNotANumber(b)||!isNotANumber(c)){
+      return;
+    }
+    document.getElementById("result").innerHTML=SoSanh(a,b,c);
+  }
+</script>
+</body>
+</html>

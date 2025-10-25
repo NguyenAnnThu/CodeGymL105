@@ -1,0 +1,80 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="vi">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Bài: Tìm thứ trong tuần</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<input type="text" id="day" placeholder="Nhập ngày (dd)">-->
+<!--<input type="text" id="month" placeholder="Nhập tháng (mm)">-->
+<!--<input type="text" id="year" placeholder="Nhập năm (yyyy)">-->
+<!--<button onclick="checkDay()">Xem thứ</button>-->
+<!--<p id="result"></p>-->
+
+<!--<script>-->
+<!--  function checkDay() {-->
+<!--    let d = Number(document.getElementById("day").value);-->
+<!--    let m = Number(document.getElementById("month").value);-->
+<!--    let y = Number(document.getElementById("year").value);-->
+
+<!--    // Kiểm tra hợp lệ-->
+<!--    if(isNaN(d) || isNaN(m) || isNaN(y) || d<=0 || m<=0 || m>12){-->
+<!--      document.getElementById("result").innerHTML = "Ngày tháng năm không hợp lệ!";-->
+<!--      return;-->
+<!--    }-->
+
+<!--    let date = new Date(y, m-1, d); // tháng trong JS bắt đầu từ 0-->
+<!--    let days = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];-->
+<!--    document.getElementById("result").innerHTML =-->
+<!--            `Ngày ${d}/${m}/${y} là ${days[date.getDay()]}`;-->
+<!--  }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+ <!--Check ngày sau n ngày -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 2 - Ngày sau n ngày</title>
+</head>
+<body>
+<input type="text" id="day" placeholder="Nhập ngày (dd)">
+<input type="text" id="month" placeholder="Nhập tháng (mm)">
+<input type="text" id="year" placeholder="Nhập năm (yyyy)">
+<input type="number" id="n" placeholder="Nhập số ngày n">
+<button onclick="findNextDay()">Xem kết quả</button>
+<p id="result"></p>
+
+<script>
+  function findNextDay() {
+    let d = Number(document.getElementById("day").value);
+    let m = Number(document.getElementById("month").value);
+    let y = Number(document.getElementById("year").value);
+    let n = Number(document.getElementById("n").value);
+
+    // Kiểm tra dữ liệu nhập
+    if(isNaN(d) || isNaN(m) || isNaN(y) || isNaN(n) || d<=0 || m<=0 || m>12){
+      document.getElementById("result").innerHTML = "Ngày/tháng/năm hoặc n không hợp lệ!";
+      return;
+    }
+
+    // Tạo đối tượng ngày
+    let date = new Date(y, m-1, d);
+    // Cộng thêm n ngày
+    date.setDate(date.getDate() + n);
+
+    // Mảng tên thứ
+    let days = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+
+    // Lấy ngày, tháng, năm sau khi cộng
+    let newDay = date.getDate();
+    let newMonth = date.getMonth() + 1;
+    let newYear = date.getFullYear();
+
+    document.getElementById("result").innerHTML =
+            `Sau ${n} ngày kể từ ${d}/${m}/${y}, sẽ là ${newDay}/${newMonth}/${newYear} (${days[date.getDay()]})`;
+  }
+</script>
+</body>
+</html>

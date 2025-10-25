@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="id" name="name"  placeholder="Nhập mã ssách:">
+<input type="text" id="name" name="name" placeholder="Nhập tên sách:">
+<input type="text" id="author" name="age" placeholder="Nhập tác giả:">
+<input type="text" id="price" name="total" placeholder="Nhập giá bán:">
+<button id="check">Thêm mới</button>
+<button id="list">Hiển thị danh sách</button>
+<button id="sort">Sắp xếp theo tên</button>
+<button id="price_max">Sách có giá >100000</button>
+<p id="result"></p>
+<script>
+  class Sach{
+    constructor(id,name,author,price){
+      this.id=id;
+      this.name=name;
+      this.author=author;
+      this.price=price;
+    }
+    getid(){return this.id}
+    getname(){return this.name;}
+    getauthor(){return this.author;}
+    getprice(){return this.price;}
+    setid(value){
+      this.id=value;
+    }
+    setname(value){
+      this.name=value;
+    }
+    setauthor(value){
+      this.author=value;
+    }
+    setprice(value){
+      this.price=value;
+    }
+    toString(){
+      return `Mã sách: ${this.id} | Tên sách: ${this.name} | Tác giả ${this.author} | Giá bán: ${this.price}`;
+    }
+  }
+  let list =[]
+  document.getElementById("check").onclick=function(){
+      let id=Number(document.getElementById("id").value);
+      let name=document.getElementById("name").value;
+      let author=document.getElementById("author").value;
+      let price=parseFloat(document.getElementById("price").value);
+      if(!id || !name || !author|| !price){
+        alert("Vui lòng nhập đầy đủ thông tin")
+        return
+      }
+      if(isNaN(id)||isNaN(price)||id<0||price<=0){
+        alert("Thông tin không đúng")
+        return
+      }
+      let book=new Sach(id,name,author,price);
+      list.push(book);
+      display()
+      document.getElementById("id").value="";
+      document.getElementById("name").value="";
+      document.getElementById("author").value="";
+      document.getElementById("price").value="";
+  }
+  function display(){
+    let result=document.getElementById("result");
+    result.innerHTML=list.map(c => c.toString()).join("<br>")
+  }
+  document.getElementById("list").onclick=function(){
+    display()
+  }
+  document.getElementById("sort").onclick=function(){
+    list.sort((a,b)=>a.name.localeCompare(b.name))
+    display()
+  }
+  document.getElementById("price_max").onclick=function(){
+    let arr=[]
+    for(let i=0;i<list.length;i++){
+      if(list[i].price>100000){
+        arr.push(list[i])
+      }
+    }
+    let result=document.getElementById("result");
+    result.innerHTML=arr.map(c=>c.toString()).join("<br>")
+  }
+</script>
+</body>
+</html>
