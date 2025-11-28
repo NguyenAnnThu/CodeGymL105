@@ -14,59 +14,29 @@ Giải pháp quản lý sản phẩm hoàn chỉnh cho cửa hàng bán lẻ –
       Tìm kiếm sản phẩm – xem thông tin chi tiết – tiến hành mua hàng.
 
 🏗️ 2. Kiến trúc hệ thống – MVC chuyên nghiệp
-src/
- ├── casestudy/
- │     ├── common/      → CheckInput, hàm đọc/ghi file, tiện ích dùng chung
- │     ├── entity/      → Product, Category
- │     ├── repository/  → Xử lý nghiệp vụ, validate, file IO
- │     ├── service/     → Trung gian, trả về boolean kết quả
- │     └── controller/  → SellerController, BuyerController
-
+-------------------------------------------------------------------------------|
+ ├── casestudy/                                                                |
+ │     ├── common/      → CheckInput, hàm đọc/ghi file, tiện ích dùng chung    |
+ │     ├── entity/      → Product, Category                                    |
+ │     ├── repository/  → Xử lý nghiệp vụ, validate, file IO                   |
+ │     ├── service/     → Trung gian, trả về boolean kết quả                   |
+ │     └── controller/  → SellerController, BuyerController                    |
+-------------------------------------------------------------------------------|
 📦 3. Danh sách thuộc tính sản phẩm
   - Mỗi sản phẩm gồm:
-<table>
-    <tr>
-      <th>Thuộc tính</th>
-      <th>Ý nghĩa </th>
-    </tr>
-    <tr>
-      <td>id</td>
-      <td>Mã sản phẩm</td>
-    </tr>
-    <tr>
-      <td>name</td>
-      <td>Tên sản phẩm (VD: Sữa Milo hộp 180ml)</td>
-    </tr>
-    <tr>
-      <td>type</td>
-      <td>Loại: sữa, bánh, kẹo…</td>
-    </tr>
-    <tr>
-      <td>manufacturer</td>
-      <td>Nhà sản xuất</td>
-    </tr>
-    <tr>
-      <td>quantity</td>
-      <td>Số lượng tồn kho</td>
-    </tr>
-    <tr>
-      <td>importPrice</td>
-      <td>Giá nhập hàng</td>
-    </tr>
-    <tr>
-      <td>sellPrice</td>
-      <td>	Giá bán</td>
-    </tr>
-    <tr>
-      <td>importDate	</td>
-      <td>Ngày nhập</td>
-    </tr>
-    <tr>
-      <td>expiredDate</td>
-      <td>Hạn sử dụng</td>
-    </tr>
-</table>
-
+----------------------------------------------------------
+| Thuộc tính     | Ý nghĩa                               |
+| -------------- | ------------------------------------- |
+| `id`           | Mã sản phẩm                           |
+| `name`         | Tên sản phẩm (VD: Sữa Milo hộp 180ml) |
+| `type`         | Loại: sữa, bánh, kẹo…                 |
+| `manufacturer` | Nhà sản xuất                          |
+| `quantity`     | Số lượng tồn kho                      |
+| `importPrice`  | Giá nhập hàng                         |
+| `sellPrice`    | Giá bán                               |
+| `importDate`   | Ngày nhập                             |
+| `expiredDate`  | Hạn sử dụng                           |
+----------------------------------------------------------
 👨‍💼 4. Chức năng của người bán (Seller)
 1️⃣ Xem danh sách sản phẩm
   - Đọc toàn bộ từ product file
