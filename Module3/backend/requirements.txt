@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+openai
+langchain_community
+langchain_text_splitters
+langchain-huggingface
+faiss-cpu
+huggingface_hub
