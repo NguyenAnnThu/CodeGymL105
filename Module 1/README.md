@@ -22,4 +22,5 @@ Module 1 là phần học **Front-end cơ bản tại CodeGym**, tập trung và
 - Chuẩn bị nền tảng cho các module nâng cao như **Java/MVC** và **Full-stack**.  
 ## Chứng chỉ sau Module: 
 
-[Link repository Module 1](https://github.com/NguyenAnnThu/CodeGymL105/tree/main/Module%201/Ch%E1%BB%A9ng%20ch%E1%BB%89)
+- [Link repository Module 1](https://github.com/NguyenAnnThu/CodeGymL105/tree/main/Module%201/Ch%E1%BB%A9ng%20ch%E1%BB%89)
+- [Link repository CaseStudt](https://github.com/NguyenAnnThu/CodeGymL105/blob/main/Module%201/Case_Study/README.md)
