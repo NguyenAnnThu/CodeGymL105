@@ -14,14 +14,14 @@ Giải pháp quản lý sản phẩm hoàn chỉnh cho cửa hàng bán lẻ –
      - Tìm kiếm sản phẩm – xem thông tin chi tiết – tiến hành mua hàng.
 
 ## 🏗️ 2. Kiến trúc hệ thống – MVC chuyên nghiệp
--------------------------------------------------------------------------------|
- ├── casestudy/                                                                |
- │     ├── common/      → CheckInput, hàm đọc/ghi file, tiện ích dùng chung    |
- │     ├── entity/      → Product, Category                                    |
- │     ├── repository/  → Xử lý nghiệp vụ, validate, file IO                   |
- │     ├── service/     → Trung gian, trả về boolean kết quả                   |
- │     └── controller/  → SellerController, BuyerController                    |
--------------------------------------------------------------------------------|
+-------------------------------------------------------------------------------
+── CaseStudy/                                                                
+      ├── common/      → CheckInput, hàm đọc/ghi file, tiện ích dùng chung    
+      ├── entity/      → Product, Category                                    
+      ├── repository/  → Xử lý nghiệp vụ, validate, file IO                   
+      ├── service/     → Trung gian, trả về boolean kết quả                   
+      └── controller/  → SellerController, BuyerController                    
+-------------------------------------------------------------------------------
 ## 📦 3. Danh sách thuộc tính sản phẩm
   - Mỗi sản phẩm gồm:
 ----------------------------------------------------------
