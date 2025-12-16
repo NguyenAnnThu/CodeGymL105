@@ -24,6 +24,14 @@ Học viên sẽ được thực hành qua các bài tập và case study, học
 ---
 
 ## Kiến trúc thư mục
+-------------------------------------------------------------------------------
+── CaseStudy/                                                                
+      ├── common/      → CheckInput, hàm đọc/ghi file, tiện ích dùng chung    
+      ├── entity/      → Product, Category                                    
+      ├── repository/  → Xử lý nghiệp vụ, validate, file IO                   
+      ├── service/     → Trung gian, trả về boolean kết quả                   
+      └── controller/  → SellerController, BuyerController                    
+-------------------------------------------------------------------------------
 
 ---
 
