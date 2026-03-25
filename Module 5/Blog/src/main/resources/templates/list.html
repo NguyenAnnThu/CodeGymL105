@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Blog</title>
+
+    <th:block th:replace="layout :: navbar"></th:block>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <!-- Ô tạo bài viết -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Tạo bài viết</h5>
+
+            <form action="/blog/create" method="post">
+                <input type="text" name="title" placeholder="Tiêu đề bài viết"
+                       class="form-control mb-3" required>
+
+                <textarea name="content" class="form-control" rows="3"
+                          placeholder="Bạn đang nghĩ gì vậy?" required></textarea>
+
+                <div class="text-end mt-3">
+                    <button class="btn btn-primary px-4">Đăng</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DANH SÁCH BÀI VIẾT -->
+    <div th:each="b : ${blog}" class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${b.title}"></h5>
+
+            <p class="card-text" th:text="${b.content}"></p>
+
+            <small class="text-muted">🕒 <span th:text="${b.createdAt}"></span></small>
+
+            <div class="mt-3">
+                <a th:href="@{/blog/detail(id=${b.id})}" class="btn btn-outline-primary btn-sm">Xem</a>
+                <button class="btn btn-outline-warning btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editModal"
+                        th:attr="data-id=${b.id},
+                                 data-title=${b.title},
+                                 data-content=${b.content}">
+                    Sửa
+                </button>
+
+                <!-- Nút Xoá mở modal -->
+                <button class="btn btn-outline-danger btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#confirmDeleteModal"
+                        th:attr="data-id=${b.id}">
+                    Xoá
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- MODAL EDIT BÀI VIẾT -->
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form action="/blog/update" method="post">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa bài viết</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" name="id" id="edit-id">
+
+                    <!-- Tiêu đề: CHỈ HIỂN THỊ, KHÔNG CHO SỬA -->
+                    <label>Tiêu đề</label>
+                    <input type="text" id="edit-title" class="form-control mb-3"
+                           readonly>
+
+                    <!-- Nội dung được phép chỉnh sửa -->
+                    <label>Nội dung</label>
+                    <textarea id="edit-content" name="content"
+                              class="form-control" rows="5" required></textarea>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- ========== MODAL XOÁ ========== -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Xác nhận xoá</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                Bạn có chắc muốn xoá bài viết này không?
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <a id="deleteBtn" href="#" class="btn btn-danger">Xoá</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const deleteModal = document.getElementById('confirmDeleteModal');
+    deleteModal.addEventListener('show.bs.modal', function (event) {
+
+        const button = event.relatedTarget;
+        const blogId = button.getAttribute('data-id');
+        const deleteBtn = document.getElementById('deleteBtn');
+
+        deleteBtn.href = "/blog/delete?id=" + blogId;
+    });
+</script>
+<script>
+    const editModal = document.getElementById('editModal');
+
+    editModal.addEventListener('show.bs.modal', function(event){
+        const btn = event.relatedTarget;
+
+        const id = btn.getAttribute('data-id');
+        const title = btn.getAttribute('data-title');
+        const content = btn.getAttribute('data-content');
+
+        document.getElementById('edit-id').value = id;
+        document.getElementById('edit-title').value = title;
+        document.getElementById('edit-content').value = content; // nội dung cũ
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
