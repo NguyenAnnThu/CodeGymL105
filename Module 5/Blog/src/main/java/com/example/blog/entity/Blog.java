@@ -17,7 +17,30 @@ public class Blog {
     private LocalDate createdAt;
     private LocalDate updateAt;
 
+    @ManyToOne
+    @JoinColumn(name="author_id")
+    private Author author;
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
     public Blog() {
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getId() {
