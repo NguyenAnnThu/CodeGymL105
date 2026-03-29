@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: layout(~{::content})">
+
+<!-- PHẢI DÙNG DIV, KHÔNG DÙNG th:block -->
+<div th:fragment="content">
+
+  <div class="container">
+    <div class="d-flex align-items-center mb-4">
+      <h2>Danh sách bài hát</h2>
+    </div>
+
+    <a href="/songs/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Thêm bài hát</a>
+
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Tên bài hát</th>
+        <th>Nghệ sĩ</th>
+        <th>Thể loại</th>
+        <th>Thao tác</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="s : ${songs}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.title}"></td>
+        <td th:text="${s.artist}"></td>
+        <td th:text="${s.genre}"></td>
+        <td>
+          <a th:href="@{'/songs/edit/' + ${s.id}}" class="btn btn-warning btn-sm">
+            <i class="fa fa-edit"></i> Sửa
+          </a>
+          <button type="button"
+                  class="btn btn-danger btn-sm btn-delete"
+                  th:attr="data-id=${s.id}">
+            <i class="fa fa-trash"></i> Xóa
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal Xóa -->
+  <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title">Xác nhận xóa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Bạn có chắc chắn muốn xóa bài hát này không?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <a id="btnDeleteConfirm" class="btn btn-danger" href="#">Xóa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Modal -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".btn-delete").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const id = this.getAttribute("data-id");
+          document.getElementById("btnDeleteConfirm").href = "/songs/delete/" + id;
+
+          let modal = new bootstrap.Modal(document.getElementById("deleteModal"));
+          modal.show();
+        });
+      });
+    });
+  </script>
+
+</div>
+</html>

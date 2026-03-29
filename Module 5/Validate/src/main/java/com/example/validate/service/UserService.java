@@ -1,0 +1,25 @@
+package com.example.validate.service;
+
+import com.example.validate.entity.User;
+import com.example.validate.repository.IUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserService implements IUserService{
+
+    @Autowired
+    private IUserRepository userRepository;
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+}
