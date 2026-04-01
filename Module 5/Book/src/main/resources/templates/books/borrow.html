@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: content">
+
+<h2>📗 Mượn sách</h2>
+
+<form th:action="@{|/book/${dto.bookId}/borrow|}" method="post">
+
+  <input type="hidden" th:value="${dto.bookId}" name="bookId"/>
+
+  <div class="mb-3">
+    <label class="form-label">Tên người mượn:</label>
+    <input class="form-control" name="customerName" required>
+  </div>
+
+  <button class="btn btn-primary">Xác nhận mượn</button>
+</form>
+
+</html>
