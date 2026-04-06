@@ -5,12 +5,23 @@
     <title>Chi tiết bài viết</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Navbar -->
-    <th:block th:replace="layout :: navbar"></th:block>
 </head>
 
 <body class="bg-light">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" style="color: black" href="/blog">MyBlog</a>
+
+        <div>
+            <a href="/blog" class="btn btn-light btn-sm me-2">Trang chủ</a>
+
+            <a href="/categories" class="btn btn-light btn-sm me-2">Thể loại</a>
+            <a href="/authors" class="btn btn-light btn-sm me-2">Tác giả</a>
+
+            <a href="/blog/create" class="btn btn-light btn-sm">Tạo bài viết</a>
+        </div>
+    </div>
+</nav>
 
 <div class="container mt-4">
     <div class="card shadow-sm">

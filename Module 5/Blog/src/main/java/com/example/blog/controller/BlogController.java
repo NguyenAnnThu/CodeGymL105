@@ -11,14 +11,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@Controller
-@RequestMapping("/blog")
+@RestController
+@RequestMapping("/api/v1/blog")
 
 public class BlogController {
     @Autowired
@@ -29,88 +30,68 @@ public class BlogController {
     private IAuthorService authorService;
 
     @GetMapping("")
-    public String listBlog(
-            Model model,
+    public ResponseEntity<Page<Blog>> listBlog(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "2") int size) {
 
         Pageable pageable = PageRequest.of(page, size);
         Page<Blog> blogPage = blogService.findAll(pageable);
 
-        model.addAttribute("blogPage", blogPage);
-        return "blog/list";
+        return ResponseEntity.ok(blogPage);
     }
-    @GetMapping("/create")
-    public String showCreateForm(Model model){
-        model.addAttribute("blog", new Blog());
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("authors", authorService.findAll());
-        return "blog/create";
-    }
+//    @GetMapping("/create")
+//    public String showCreateForm(Model model){
+//        model.addAttribute("blog", new Blog());
+//        model.addAttribute("categories", categoryService.findAll());
+//        model.addAttribute("authors", authorService.findAll());
+//        return "blog/create";
+//    }
 
-    // CREATE BLOG
     @PostMapping("/create")
-    public String createBlog(@ModelAttribute Blog blog){
+    public ResponseEntity<?> createBlog(@RequestBody Blog blog) {
         blogService.create(blog);
-        return "redirect:/blog";
+        return ResponseEntity.ok("Create success");
     }
 
-    // BLOG DETAIL
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable int id, Model model){
+    @GetMapping("/{id}")
+    public ResponseEntity<?> detail(@PathVariable ("id") int id){
         Blog blog = blogService.findById(id);
-        if (blog == null) return "redirect:/blog";
+        if (blog == null) {
+            return ResponseEntity.ok(blog);
+        }
 
-        model.addAttribute("blog", blog);
-        return "blog/detail";
+       return ResponseEntity.ok(blog);
     }
 
-    // SHOW UPDATE FORM
-    @GetMapping("/edit/{id}")
-    public String showEdit(@PathVariable int id, Model model){
-        Blog blog = blogService.findById(id);
-        if (blog == null) return "redirect:/blog";
-
-        model.addAttribute("blog", blog);
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("authors", authorService.findAll());
-
-        return "blog/edit";
-    }
-
-    // UPDATE BLOG
-    @PostMapping("/update")
-    public String updateBlog(
-            @RequestParam("id") int id,
-            @RequestParam("title") String title,
-            @RequestParam("content") String content,
-            @RequestParam("author.id") int authorId,
-            @RequestParam("category.id") int categoryId,
-            @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdAt
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateBlog(
+            @PathVariable ("id") int id,
+            @RequestBody Blog updatedBlog
     ) {
-        // Lấy blog từ DB
+
         Blog blog = blogService.findById(id);
+        if (blog == null) {
+            return ResponseEntity.notFound().build();
+        }
 
-        blog.setTitle(title);
-        blog.setContent(content);
+        blog.setTitle(updatedBlog.getTitle());
+        blog.setContent(updatedBlog.getContent());
+        blog.setCreatedAt(updatedBlog.getCreatedAt());
 
-        // Lấy entity Author & Category từ DB
-        Author author = authorService.findById(authorId);
-        Category category = categoryService.findById(categoryId);
-
+        Author author = authorService.findById(updatedBlog.getAuthor().getId());
         blog.setAuthor(author);
+
+        Category category = categoryService.findById(updatedBlog.getCategory().getId());
         blog.setCategory(category);
-        blog.setCreatedAt(createdAt);
 
-        blogService.update(id,blog);
+        blogService.update(id, blog);
 
-        return "redirect:/blog";
+        return ResponseEntity.ok("Update success");
     }
 
-    // DELETE
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable int id) {
         blogService.deleteById(id);
-        return "redirect:/blog";
+        return ResponseEntity.ok("Delete success");
     }
 }
