@@ -12,4 +12,5 @@ public interface IBlogService {
     Page<Blog> findAll(Pageable pageable);
     Blog update(int id,Blog blog);
     void deleteById(int id);
+    List<Blog> searchByTitle(String keyword);
 }
